@@ -1,0 +1,23 @@
+version: '3.8' #compose的版本号
+
+services:
+  redis-server:
+    image: redis:latest
+    networks:
+      - demo-network
+  
+  flask-demo:
+    build: 
+      context: ./flask #Dockerfile所在文件夹
+      dockerfile: dockerfile-flask #Dockerfile文件名
+    container_name: my-flask-demo #自定义容器名字
+    image: flask-demo:latest
+    environment:
+      - REDIS_HOST=redis-server
+    networks:
+      - demo-network
+    ports:
+      - 5000:5000
+    
+networks:
+  demo-network:
