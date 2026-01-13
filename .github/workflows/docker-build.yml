@@ -7,6 +7,6 @@ jobs:
       - name: Check out repository code #检查仓库代码
         uses: actions/checkout@v5
       - name: docker image build #创建镜像
-        run: docker image build -t 873933753/Docker-practice:latest .
+        run: docker image build -t 873933753/docker-practice:latest .
       - name: list docker image # 镜像列表
         run: docker image ls
